@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>A really simple calculator</title>
+    <style>
+        body {
+            background-color: rgb(226, 157, 200);
+            font-family: fantasy;
+        }
+
+        .special {
+            color: rgb(207, 68, 138);
+            font-size: x-large;
+        }
+
+        .operator {
+            font-weight: bold;
+        }
+
+        #result {
+            color: rgb(252, 249, 251);
+            border: solid 2pt;
+        }
+    </style>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script>
+        function sum() {
+            const x = document.getElementById('first').value;
+            const y = document.getElementById('second').value;
+            document.getElementById('result').innerHTML = Number(x) + Number(y);
+        }
+        function subtract() {
+            const x = document.getElementById('first').value;
+            const y = document.getElementById('second').value;
+            document.getElementById('result').innerHTML = Number(x) - Number(y);
+        }
+        function multiply() {
+            const x = document.getElementById('first').value;
+            const y = document.getElementById('second').value;
+            document.getElementById('result').innerHTML = Number(x) * Number(y);
+        }
+        function divide() {
+            const x = document.getElementById('first').value;
+            const y = document.getElementById('second').value;
+            document.getElementById('result').innerHTML = Number(x) / Number(y);
+        }
+        function equal(sign) {
+            if (sign == "plus") { sum(); }
+            else if (sign == "minus") { subtract(); }
+            else if (sign == "product") { multiply(); }
+            else { divide(); }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="special">It is a calculator<br>
+        <input id="first" placeholder="first number">
+        <p class="operator">
+            <select name="selection" id="sign">
+                <option value="plus">+</option>
+                <option value="minus">-</option>
+                <option value="product">*</option>
+                <option value="division">/</option>
+            </select>
+        </p>
+        <input id="second" placeholder="second number">
+        <br>
+        <button id="equalTo" onclick="equal(document.getElementById('sign').value)">=</button>
+        <p id="result">Result</p>
+    </div>
+</body>
